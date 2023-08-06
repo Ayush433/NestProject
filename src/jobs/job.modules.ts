@@ -1,14 +1,12 @@
-// import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-// import { userAgent } from 'src/Middleware/user.agent.middleware';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { JobsServices } from './controller/job.controller';
+import { JobSchema } from './Schema/job.schema';
 
-// @Module({
-//   imports: [],
-//   controllers: [],
-//   providers: [],
-//   exports: [],
-// })
-// export class JobModules implements NestModule {
-//   configure(consumer: MiddlewareConsumer) {
-//     consumer.apply(userAgent).forRoutes('jobs');
-//   }
-// }
+@Module({
+  imports: [MongooseModule.forFeature([{ name: 'Job', schema: JobSchema }])],
+  controllers: [],
+  providers: [JobsServices],
+  exports: [MongooseModule],
+})
+export class JobModules {}

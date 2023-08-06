@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Types } from 'mongoose';
-import { User, UserModel } from 'src/users/userSchema/user.schema';
+import { Document, Types } from 'mongoose';
+import { User, UserModel } from '../../users/userSchema/user.schema';
 import { Job_Type } from '../Constants/job.constants';
 
 @Schema({
@@ -34,5 +34,6 @@ export class Job {
   @Prop({ required: true })
   salary?: number;
 }
-
+export type JobDocument = User & Document;
+export const JobModels = Job.name; //job
 export const JobSchema = SchemaFactory.createForClass(Job);

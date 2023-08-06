@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 import { Address, AddressSchema } from './Commom/address.schema';
 @Schema({
   timestamps: true,
@@ -33,5 +34,7 @@ export class User {
   @Prop({ type: AddressSchema, required: true })
   address: Address;
 }
+
+export type UserDocument = User & Document;
 export const UserModel = User.name;
 export const userSchema = SchemaFactory.createForClass(User);

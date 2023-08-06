@@ -5,6 +5,7 @@ import { Inject, Module } from '@nestjs/common';
 import { UserModules } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JobModules } from './jobs/job.modules';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       envFilePath: ['.env', '.dev.env'],
     }),
     UserModules,
+    JobModules,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
